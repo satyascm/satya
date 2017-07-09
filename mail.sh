@@ -1,3 +1,3 @@
 
 #!/bin/bash
-mail -s “Build Step Complted Successfully :${currentBuild.fullDisplayName}” satyapriya.das@cognizant.com
+mail -s “Build Step Completed Successfully” satyapriya.das@cognizant.com
