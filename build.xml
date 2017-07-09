@@ -1,35 +1,42 @@
 <?xml version="1.0" ?> 
-<project name="AntExample1" default="war">
+<project name="SatyaDemo" default="jar">
 <property name="workspace"  value="/root/.jenkins/workspace/DemoPipelineProject"/>
+	<property name="src.dir"     value="src"/>
+	<property name="build.dir"   value="build"/>
+	<property name="classes.dir" value="${build.dir}/classes"/>
+	<property name="jar.dir"     value="${build.dir}/jar"/>
+	<property name="main-class"  value="HelloWorld"/>
 	<path id="compile.classpath">
 		<fileset dir="WebContent/WEB-INF/lib">
 			<include name="*.jar"/>
 		</fileset>
 	</path>
 	
-	<target name="init">
+	<target name="clean">
+		<delete dir="dist" />
+		<delete dir="build" />
+	</target>
+	
+	<target name="init" depends="clean" >
 		<mkdir dir="build/classes"/>
 		<mkdir dir="dist" />
 	</target>
 	
 	<target name="compile" depends="init" >
 		<javac destdir="build/classes" debug="true" srcdir="src">
-			<classpath refid="compile.classpath"/>
 		</javac>
 		<chmod file="${workspace}/mail.sh" perm="ugo+rx"/>
 	</target>
 	
-	<target name="war" depends="compile">
-		<war destfile="dist/AntExample.war" webxml="WebContent/WEB-INF/web.xml">
-			<fileset dir="WebContent"/>
-			<lib dir="WebContent/WEB-INF/lib"/>
-			<classes dir="build/classes"/>
-		</war>
-	</target>
+	<target name="jar" depends="compile">
+        <mkdir dir="${jar.dir}"/>
+        <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main-class}"/>
+            </manifest>
+        </jar>
+    	</target>
 	
-	<target name="clean">
-		<delete dir="dist" />
-		<delete dir="build" />
-	</target>
+	
 	
 </project>
