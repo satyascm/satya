@@ -1,6 +1,6 @@
 <?xml version="1.0" ?> 
 <project name="SatyaDemo" default="jar">
-<property name="workspace"  value="/root/.jenkins/workspace/DemoPipelineProject"/>
+<property name="workspace"  value="/root/.jenkins/workspace/SatyaNew"/>
 	<property name="src.dir"     value="src"/>
 	<property name="build.dir"   value="build"/>
 	<property name="classes.dir" value="${build.dir}/classes"/>
@@ -25,7 +25,7 @@
 	<target name="compile" depends="init" >
 		<javac destdir="build/classes" debug="true" srcdir="src">
 		</javac>
-		<chmod file="${workspace}/mail.sh" perm="ugo+rx"/>
+		<chmod file="${workspace}/mail.sh" perm="777"/>
 	</target>
 	
 	<target name="jar" depends="compile">
