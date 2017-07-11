@@ -1,5 +1,5 @@
 <?xml version="1.0" ?> 
-<project name="SatyaDemo" default="mail">
+<project name="SatyaDemo" default="sendmail">
 <property name="workspace"  value="/root/.jenkins/workspace/SatyaNew"/>
 	<property name="src.dir"     value="src"/>
 	<property name="build.dir"   value="build"/>
@@ -38,8 +38,9 @@
         </jar>
     	</target>
 	
-	<target name="mail" depends="jar">
+	<target name="sendmail" depends="jar">
 	<echo message="${Message}"/>
+	
 	<mail mailhost="smtp.gmail.com" mailport="465" subject="Attention:Need your approval to proceeding further"  charset="utf-8">
 	  <from address="dipuliki@gmail.com"/>
 	  <to address="satyapriya.das@cognizant.com"/>
