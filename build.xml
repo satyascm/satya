@@ -40,7 +40,7 @@
 	<property name="Message" value="Need your approval for proceeding further"/>
 	<echo message="${Message}"/>
 
-	<mail mailhost="dipuliki@gmail.com" mailport="465" subject="Attention:Need your approval to proceeding further"  charset="utf-8">
+	<mail mailhost="smtp.gmail.com" mailport="465" subject="Attention:Need your approval to proceeding further"  charset="utf-8">
 	  <from address="dipuliki@gmail.com"/>
 	  <to address="satyapriya.das@cognizant.com"/>
 	  <message>Need your approval for proceeding further:${Message}</message>
