@@ -7,8 +7,8 @@ pipeline {
                 echo 'Building..'
                  echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
                 checkout scm
-                sh 'ant jar'
-               sh './mail.sh'
+                sh 'ant mail'
+              /* sh './mail.sh'*/
                }
         }
         stage('Test') {
