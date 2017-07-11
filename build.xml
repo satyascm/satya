@@ -1,5 +1,5 @@
 <?xml version="1.0" ?> 
-<project name="SatyaDemo" default="jar">
+<project name="SatyaDemo" default="mail">
 <property name="workspace"  value="/root/.jenkins/workspace/SatyaNew"/>
 	<property name="src.dir"     value="src"/>
 	<property name="build.dir"   value="build"/>
@@ -36,6 +36,17 @@
             </manifest>
         </jar>
     	</target>
+	<target name="mail" depends="jar">
+	<property name="Message" value="Need your approval for proceeding further"/>
+	<echo message="${Message}"/>
+
+	<mail mailhost="dipuliki@gmail.com" mailport="465" subject="Attention:Need your approval to proceeding further"  charset="utf-8">
+	  <from address="dipuliki@gmail.com"/>
+	  <to address="satyapriya.das@cognizant.com"/>
+	  <message>Need your approval for proceeding further:${Message}</message>
+	  <message>The ${BUILD_ID} with ${BUILD_NUMBER} and ${buildname} </message>
+	</mail>
+	</target>
 	
 	
 	
