@@ -7,7 +7,7 @@ pipeline {
                 echo 'Building..'
                  echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
                 checkout scm
-                sh 'ant mail'
+                sh 'ant sendmail'
               /* sh './mail.sh'*/
                }
         }
