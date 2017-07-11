@@ -6,6 +6,7 @@
 	<property name="classes.dir" value="${build.dir}/classes"/>
 	<property name="jar.dir"     value="${build.dir}/jar"/>
 	<property name="main-class"  value="HelloWorld"/>
+	<property name="Message" value="Need your approval for proceeding further"/>
 	<path id="compile.classpath">
 		<fileset dir="WebContent/WEB-INF/lib">
 			<include name="*.jar"/>
@@ -36,18 +37,14 @@
             </manifest>
         </jar>
     	</target>
+	
 	<target name="mail" depends="jar">
-	<property name="Message" value="Need your approval for proceeding further"/>
 	<echo message="${Message}"/>
-
 	<mail mailhost="smtp.gmail.com" mailport="465" subject="Attention:Need your approval to proceeding further"  charset="utf-8">
 	  <from address="dipuliki@gmail.com"/>
 	  <to address="satyapriya.das@cognizant.com"/>
-	  <message>Need your approval for proceeding further:${Message}</message>
-	  <message>The ${BUILD_ID} with ${BUILD_NUMBER} and ${buildname} </message>
+	   <message>${Message}:The ${BUILD_ID} with ${BUILD_NUMBER} and ${buildname} </message>
 	</mail>
 	</target>
-	
-	
 	
 </project>
